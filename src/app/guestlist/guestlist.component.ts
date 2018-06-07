@@ -13,6 +13,7 @@ import { log } from 'util';
 export class GuestlistComponent implements OnInit {
   
   guests: Person[];
+  filteredGuest: Person[] = [];
 
   constructor(private peopleService:PeopleService) { }
 
@@ -26,10 +27,21 @@ export class GuestlistComponent implements OnInit {
     // data is coming from people.service.ts>getPeople()
   }
 
-  ngOnInit() {
-    this.getPeople();  
+
+
+  findPeople(fn, ln){
+    // clear the previous input and result
+    this.filteredGuest.length = 0;
+
+    // console.log(fn.value);
+    // console.log(ln.value);
+    this.peopleService.getPeople(fn.value, ln.value).subscribe(data => this.filteredGuest = data);
   }
 
 
+
+  ngOnInit() {
+    this.getPeople();  
+  }
 
 }

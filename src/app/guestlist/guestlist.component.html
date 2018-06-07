@@ -6,3 +6,23 @@
     </li>
   </ul>
 </div>
+
+<div>
+  <label for="fn">First Name: </label>
+  <input id="fn" #fn type="text" value="{{inputfn}}">
+</div>
+<div>
+  <label for="ln">Last Name: </label>
+  <input id="ln" #ln type="text" value="{{inputln}}">
+</div>
+<button type="submit" (click)="findPeople(fn, ln)">Search</button>
+
+
+<h2>Search Results</h2>
+<div *ngIf="filteredGuest">
+  <ul>
+    <li *ngFor="let fg of filteredGuest">
+      {{ fg.firstName }} {{ fg.lastName }}, {{ fg.getLocalDate()|date:'yyyy/MM/dd'}} ({{fg.getAge()}})
+    </li>
+  </ul>
+</div>
