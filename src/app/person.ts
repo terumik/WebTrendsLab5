@@ -21,4 +21,13 @@ export class Person {
         var ageDate = new Date(ageDifMs);
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
+
+    getLocalDate():Date {
+
+        let offset = this.dateOfBirth.getTimezoneOffset() * 60 * 1000; // diff in ms
+        let msDate = this.dateOfBirth.valueOf(); // UTC date in ms
+        let localDate = new Date(msDate+offset);
+        
+        return localDate;
+    }
 }

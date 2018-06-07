@@ -1,0 +1,8 @@
+<h1>Guests</h1>
+<div *ngIf="guests">
+  <ul>
+    <li *ngFor="let g of guests">
+      {{ g.firstName }} {{ g.lastName }}, {{ g.getLocalDate()|date:'yyyy/MM/dd'}} ({{g.getAge()}})
+    </li>
+  </ul>
+</div>
